@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <!-- Flatpickr CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <!--Bootstrap npm-->
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+    <nav class="navbar bg-primary navbar-expand-lg py-4 px-3">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-3 fw-bold" href="../index.html">Películas y Series G8</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+          <div class="row justify-content-center my-4">
+              <div class="col-11 col-sm-10 col-md-8">
+                <p class="display-5 mb-4">Iniciar Sesión</p>
+
+                <form class="row g-3 justify-content-center">
+                    <div class="col-md-6">
+                        
+                        <div class="col-12 my-3">
+                            <label for="inputEmail4" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Ingrese su email">
+                        </div>
+                        <div class="col-12 my-3">
+                            <label for="inputPassword4" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Contraseña">
+                        </div>
+
+                        <div class="col-12 my-3">
+                            <button  type="button" onclick="validarDatos()" class="btn btn-primary">Iniciar Sesión</button>
+                        </div>
+                    </div>
+                </form>
+
+              </div>
+          </div>
+      </div>
+
+
+    <script src="../login/login.js"></script>
+</body>
+</html>

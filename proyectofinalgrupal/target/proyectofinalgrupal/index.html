@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="es" >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proyecto Películas G8</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css"> -->
+
+    <!--datatables para bd-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+  </head>
+
+  <body>
+    <div class="container-fluid g-0">
+
+
+    <nav class="navbar navbar-expand-lg py-4 px-3 bg-primary" >
+        <div class="container-fluid">
+          <a class="navbar-brand fs-3 fw-bold" href="#">Películas y Series G8</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
+              <li class="nav-item mx-3">
+                <a class="nav-link active" aria-current="page" href="#estrenos">Estrenos</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="#clasicos">Clásicos</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="#series">Series</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="#api">API Clima</a>
+              </li>
+              <!--agregado para probar base de datos-->
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="#tabladb">Listado Pelis</a>
+              </li>
+            </ul>
+            
+            <button onclick="location.href='api/api.html'" class="btn btn-outline-light mx-3 " type="submit">API</button>
+            <button onclick="location.href='registro/registro.html'" class="btn btn-outline-light mx-3 " type="submit">Registrarse</button>
+            <button onclick="location.href='login/login.html'" class="btn btn-outline-light mx-3" type="submit">Iniciar Sesión</button>
+
+
+            <ul class="navbar-nav g-0">
+              <li class="navbar dropdown">
+
+               <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
+                <span class=" bi my-1 theme-icon-active">
+                    <i class="bi bi-circle-half"></i>
+                </span>  
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi my-1 theme-icon-active bi-circle-half" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/>
+                </svg> -->
+                <svg class="bi my-1 theme-icon-active" width="16" height="16" fill="currentColor">
+                  <use href="#circle-half"></use>
+                </svg>
+               <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
+               </button>
+
+               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                    <span class="bi me-2 opacity-50">
+                      <i class="bi bi-sun-fill"></i>
+                    </span>
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun-fill" viewBox="0 0 16 16">
+                      <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+                      <use href="#sun-fill"></use>
+                    </svg> -->
+                    <!-- <svg class="bi me-2 opacity-50">
+                        <use href="#sun-fill"></use>
+                    </svg> -->
+                    Light
+
+                    <span class="bi ms-auto d-none">
+                      <i class="bi bi-check2"></i>
+                    </span>  
+                    <!-- <svg class="bi ms-auto d-none">
+                        <use href="#check2"></use>
+                    </svg> -->
+                  </button>                   
+                </li>
+                
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                    <span class="bi me-2 opacity-50">
+                      <i class="bi bi-moon-stars-fill"></i>
+                    </span>
+                    <!-- <svg class="bi me-2 opacity-50">
+                        <use href="#moon-stars-fill"></use>
+                    </svg> -->
+                    Dark
+                    <span class="bi ms-auto d-none">
+                      <i class="bi bi-check2"></i>
+                    </span>
+                    <!-- <svg class="bi ms-auto d-none">
+                        <use href="#check2"></use>
+                    </svg> -->
+                  </button>                    
+                </li>
+
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                    <span class="bi me-2 opacity-50">
+                      <i class="bi bi-circle-half"></i>
+                    </span>
+                    <!-- <svg class="bi me-2 opacity-50">
+                        <use href="#circle-half"></use>
+                    </svg> -->
+                    Auto
+                    <span class="bi ms-auto d-none">
+                      <i class="bi bi-check2"></i>
+                    </span>
+                    <!-- <svg class="bi ms-auto d-none">
+                        <use href="#check2"></use>
+                    </svg> -->
+                  </button>                   
+                </li>
+               </ul>
+              </li>
+
+            </ul>
+             
+            
+
+
+          </div>
+        </div>
+    </nav>
+
+    <!-- Carrusel -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active " data-bs-interval="3000">
+            <img src="assets/img/b01.jpg" class="d-block w-100" alt="..." style="filter: brightness(0.35)">
+            <div class="col carousel-caption d-none d-md-block h-100 d-flex align-content-center">
+              <h5 class="text-light fw-bold display-3 ">El mejor entretenimiento</h5>
+              <p class="text-light fs-4">Está aquí en Películas y Series G8</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="assets/img/b02.jpg" class="d-block w-100" alt="..." style="filter: brightness(0.35)">
+            <div class="col carousel-caption d-none d-md-block h-100 d-flex align-content-center">
+              <h5 class="text-light fw-bold display-3">Las mejores películas</h5>
+              <p class="text-light fs-4">Prepará tu pororó.</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="assets/img/b03.jpg" class="d-block w-100" alt="..." style="filter: brightness(0.35)">
+            <div class="col carousel-caption d-none d-md-block h-100 d-flex align-content-center">
+              <h5 class="text-light fw-bold display-3">Las mejores series</h5>
+              <p class="text-light fs-4">Para relajarse y disfrutar.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- <hr class="border border-danger border-2 opacity-50"> -->
+    <!-- <hr class="border border-primary-subtle border-3 opacity-75"> -->
+
+    <!-- Buscador -->
+    <div class="row my-4 ">
+      <hr class="border border-light border-2 opacity-75 w-75 mx-auto my-4">
+    </div>
+
+    <div class="row g-0 justify-content-center align-content-center">
+      <div class="col-11 col-sm-10 col-md-6 justify-content-center">
+        <form class="d-flex my-2 my-md-5" role="search">
+          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-light px-4" type="submit">Buscar</button>
+        </form>
+      </div>
+    </div>
+
+    
+
+    <div class="row my-4">
+      <hr class="border border-light border-2 opacity-75 w-75 mx-auto my-4">
+    </div>
+
+
+    <div id="estrenos" class="row my-5">
+        <div class="col">
+            <h1 class="text-center my-5">ESTRENOS</h1>
+        </div>
+    </div>
+    
+    
+    <div class="row text-center justify-content-evenly">
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m01.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m02.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m03.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m04.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m05.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m06.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m07.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m08.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m09.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m10.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m11.jpg" alt="">
+        </div>
+        <div class="col-3 col-md-2 col-lg-2 m-3 ">
+          <img src="assets/img/minis/m12.jpg" alt="">
+        </div>
+    </div>
+
+
+    <div class="row my-4">
+      <hr class="border border-light border-2 opacity-75 w-75 mx-auto my-4">
+    </div>
+
+    <div id="clasicos" class="row my-5">
+      <div class="col">
+          <h1 class="text-center my-5">CLÁSICOS</h1>
+      </div>
+    </div>
+
+    <div class="row text-center justify-content-evenly">
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/clasicos/c01.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/clasicos/c02.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/clasicos/c03.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/clasicos/c04.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/clasicos/c05.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/clasicos/c06.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/clasicos/c07.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/clasicos/c08.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <hr class="border border-light border-2 opacity-75 w-75 mx-auto my-4">
+    </div>
+
+    <div id="series" class="row my-5">
+      <div class="col">
+          <h1 class="text-center my-5">SERIES</h1>
+      </div>
+    </div>
+
+    <div class="row text-center justify-content-evenly mb-5">
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/series/s01.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/series/s02.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/series/s03.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/series/s04.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/series/s05.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/series/s06.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/series/s07.jpg" alt="">
+      </div>
+      <div class="col col-md-4 col-lg-3 m-3">
+        <img src="assets/img/series/s08.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <hr class="border border-light border-2 opacity-75 w-75 mx-auto my-4">
+    </div>
+
+    <div id="api" class="row my-5">
+      <div class="col">
+        <h1 class="text-center my-5">CLIMA</h1>
+      </div>
+    </div>
+
+    <div class="row text-center justify-content-evenly mb-5 ">
+      <div class="col-11 col-sm-10 col-md-8 col-xl-6">
+        <button id="clima" class="btn btn-outline-light mb-5">Ver Clima</button>
+        
+        <div class="mb-4" id="weatherapi-weather-widget-4"></div><script type='text/javascript' src='https://www.weatherapi.com/weather/widget.ashx?loc=109181&wid=4&tu=1&div=weatherapi-weather-widget-4' async></script><noscript><a href="https://www.weatherapi.com/weather/q/mendoza-109181" alt="Hour by hour Mendoza weather">10 day hour by hour Mendoza weather</a></noscript>
+        
+      </div>
+    </div>
+
+
+    <!--*****************agregado para probar base de datos*************************-->
+
+    <div class="row my-4">
+      <hr class="border border-light border-2 opacity-75 w-75 mx-auto my-4">
+    </div>
+
+    <div id="tabladb" class="row my-5">
+      <div class="col">
+        <h1 class="text-center my-5">Listado de peliculas</h1>
+      </div>
+    </div>
+
+    <section id="movieSection">
+      <div class="table-responsive">
+        <table class="table table-striped" id="pelisdb">
+          <tr class="table-primary">
+            <th>id</th>
+            <th>Titulo</th>
+            <th>Descripción</th>
+            <th>Género</th>
+            <th>Puntuación</th>
+            <th>Director</th>
+            <th>Año de estreno</th>
+          </tr>
+        </table>
+      </div>
+    </section>
+      
+    <!--****************************************************************************-->
+    <!-- Footer -->
+
+    <div class="container-fluid text-bg-primary bg-opacity-75 ">
+      <div class="row text-center py-5 ">
+        <div class="col">
+          <h4 class="fw-light">Grupo 8 | Codo a Codo 2024</h4>
+          <h5 class="fw-light">Argentina.</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- final container -->
+    </div> 
+
+
+  <!-- Boton flecha -->
+    <div class="row position-absolute bottom-0 end-0 position-fixed g-0">
+    <a href="#" >
+      <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-arrow-up-circle-fill m-3" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+      </svg>
+    </a>
+    </div>
+
+
+    <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>  Lo deshabilite para que funcionara en github -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
+    <!-- <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <script src="index-colormodes.js"></script>
+    <script src="api/api.js"></script>
+
+    <!--*******************para bd**********************-->
+    <script>
+      let table = new DataTable('#pelisdb');
+    </script>
+    <script src="js/GetRequest.js"></script>
+  </body>
+</html>

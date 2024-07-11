@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Clima</title>
+    <!-- Flatpickr CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <!--Bootstrap npm-->
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+    <nav class="navbar bg-primary navbar-expand-lg py-4 px-3">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-3 fw-bold" href="../index.html">Películas y Series G8</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+          <div class="row justify-content-center my-4">
+              <div class="col-11 col-sm-10 col-md-8">
+                <p class="display-5 mb-4">Clima</p>
+
+                <form class="row g-3 justify-content-center">
+                    <div class="col-md-6">
+
+                        <div class="row text-center justify-content-evenly mb-5">
+                            <div class="col">
+                              <button id="clima" type="button" class="btn btn-outline-light">Ver Clima</button>
+                            </div>
+                          </div>
+                    </div>
+                </form>
+
+                <div id="weatherapi-weather-widget-4"></div><script type='text/javascript' src='https://www.weatherapi.com/weather/widget.ashx?loc=109181&wid=4&tu=1&div=weatherapi-weather-widget-4' async></script><noscript><a href="https://www.weatherapi.com/weather/q/mendoza-109181" alt="Hour by hour Mendoza weather">10 day hour by hour Mendoza weather</a></noscript>
+
+              </div>
+          </div>
+      </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
+     
+    <script src="../api/api.js"></script>
+</body>
+</html>
